@@ -13,8 +13,7 @@
     "sdkVersion": "3",
     "shortName": "BlogFace",
     "targetPlatforms": [
-        "basalt",
-        "chalk"
+        "basalt"
     ],
     "uuid": "3ab5ffbb-d2ed-4335-9d26-07b8d972a536",
     "versionLabel": "1.0",

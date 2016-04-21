@@ -26,20 +26,29 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 }
 
 void main_window_load(Window *window) {  
+	//Get the bounds of the Window, so I can set the size of the time_layer with it
 	Layer *window_layer = window_get_root_layer(window);
 	GRect bounds = layer_get_bounds(window_layer);
+	//hard code in the height of the time_layer
 	int timeHeight = 50;
+	//Set the Y Coord of the time_layer to be as centered as possible.
 	int timeYCoord = bounds.size.h/2 - timeHeight/2;
 	
+	//Makes the time_layer using the values from above, I use the width of the window for it, but it can be smaller if needed.
 	time_layer = text_layer_create(GRect(0, timeYCoord, bounds.size.w, timeHeight));
+	
+	//Set the background of the time_layer to clear and its text colour to black
 	text_layer_set_background_color(time_layer, GColorClear);
 	text_layer_set_text_color(time_layer, GColorBlack);
 	
-	window_set_background_color(window, GColorWhite);
-
+	//Set the text alignment to centered
+	text_layer_set_text_alignment(time_layer, GTextAlignmentCenter);
+	
+	//There are a bunch of system fonts to pick from and it's easy to add custom ones, I just kinda like this one.
 	GFont time_font = fonts_get_system_font(FONT_KEY_LECO_38_BOLD_NUMBERS);
 	text_layer_set_font(time_layer, time_font);
-	text_layer_set_text_alignment(time_layer, GTextAlignmentCenter);
+	
+	window_set_background_color(window, GColorWhite);
 
 	layer_add_child(window_get_root_layer(window), text_layer_get_layer(time_layer));
 }
@@ -51,6 +60,7 @@ void main_window_unload(Window *window) {
 void handle_init(void) {
   my_window = window_create();
 	
+	//This just makes sure our window load and unload methods are called at the right time
 	window_set_window_handlers(my_window, (WindowHandlers) {
 		.load = main_window_load,
 		.unload = main_window_unload
