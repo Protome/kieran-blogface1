@@ -1,0 +1,24 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "kieran.bamford@gmail.com",
+    "enableMultiJS": true,
+    "longName": "BlogFace",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "BlogFace",
+    "targetPlatforms": [
+        "basalt",
+        "chalk"
+    ],
+    "uuid": "3ab5ffbb-d2ed-4335-9d26-07b8d972a536",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
